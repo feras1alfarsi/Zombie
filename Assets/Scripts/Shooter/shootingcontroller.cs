@@ -83,6 +83,16 @@ public class shootingcontroller : MonoBehaviour
                     ParticleSystem blood = Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
                     Destroy(blood.gameObject, blood.main.duration);
                 }
+
+                WayPointZombieAI WayPointZombieAI = hit.collider.GetComponent<WayPointZombieAI>();
+                if (WayPointZombieAI != null)
+                {
+                    WayPointZombieAI.TakeDamage(damagePershot);
+
+                    // Play eefect particle system at teh hit point.
+                    ParticleSystem blood = Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(blood.gameObject, blood.main.duration);
+                }
             }
 
             muzzleFlash.Play();

@@ -26,6 +26,15 @@ public class WayPointZombieAI : MonoBehaviour
 
     void Start()
     {
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if(playerObject != null)
+        {
+            player = playerObject.transform;
+        }
+        else
+        {
+            Debug.Log("Player object not found");
+        }
         capsuleCollider = GetComponent<CapsuleCollider>();
         navAgent = GetComponent<NavMeshAgent>();
         lastAttackTime = -attackCooldown;
@@ -68,6 +77,8 @@ public class WayPointZombieAI : MonoBehaviour
                 capsuleCollider.enabled = false;
                 enabled = false;
                 //incraese score
+                GameManager.instance.currentScore += 1;
+
                 Debug.Log("Dead");
                 break;
         }
