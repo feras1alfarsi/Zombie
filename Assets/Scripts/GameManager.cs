@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public int highscore;
     public int currentScore;
+    public Text highScoreText;
+    public Text currentScoreText;
     public GameObject[] weapons;
     [SerializeField] private int currentweaponIndex = 0;
 
@@ -22,6 +25,9 @@ public class GameManager : MonoBehaviour
         {
             highscore = currentScore;
         }
+
+        highScoreText.text = highscore.ToString();
+        currentScoreText.text = currentScore.ToString();
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SwitchWeapon(0);

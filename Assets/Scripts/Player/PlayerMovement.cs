@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Health & Damage")]
     private int maxHealth = 100;
     public int currentHealth;
+    public Slider HealthSlider;
     // Health slider
     // deathscreen
     [Header("Player Movement & Gravity")]
@@ -31,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        HealthSlider.minValue = 1;
+        HealthSlider.maxValue = currentHealth;
+        HealthSlider.value = currentHealth;
         controller = GetComponent<CharacterController>();
     }
 
@@ -95,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        HealthSlider.value -= damageAmount;
         if(currentHealth <= 0)
         {
             currentHealth = 0;
