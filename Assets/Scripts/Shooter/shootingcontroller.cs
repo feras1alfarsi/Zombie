@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class shootingcontroller : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class shootingcontroller : MonoBehaviour
     public AudioSource soundAudioSource;
     public AudioClip shootingSoundClip;
     public AudioClip reloadSoundClip;
+    public Text currentAmmoText;
     private void Start()
     {
         currentAmmo = maxAmmo;
@@ -29,6 +31,8 @@ public class shootingcontroller : MonoBehaviour
 
     private void Update()
     {
+        currentAmmoText.text = currentAmmo.ToString();
+
         if (isReloading)
             return;
 

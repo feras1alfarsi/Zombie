@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Slider HealthSlider;
     // Health slider
     // deathscreen
+    public DeadScreen deadScreen;
     [Header("Player Movement & Gravity")]
     public float movementSpeed = 5f;
     public float jumpForce = 2f;
@@ -111,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
     private void Die()
     {
         //deathscreen
+        deadScreen.showDeadScreen = true;
         Debug.Log("Player has died");
     }
 }

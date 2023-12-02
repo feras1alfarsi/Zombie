@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class zombieWaveSystem : MonoBehaviour
 {
@@ -8,8 +9,12 @@ public class zombieWaveSystem : MonoBehaviour
     public Transform[] spawnpoints;
     public float timeBetweenwaves = 10f;
     [SerializeField] private float waveTimer = 0f;
-    private int waveNumber;
+    private int waveNumber = 1;
     public int zombiesPerwave = 4;
+
+    [Header("UI")]
+    public Text WaveNumber;
+    public Text WaveTimer;
 
     void Update()
     {
@@ -20,7 +25,10 @@ public class zombieWaveSystem : MonoBehaviour
 
         int intValue = Mathf.RoundToInt(waveTimer);
 
-        if(waveTimer >= timeBetweenwaves)
+        WaveTimer.text = intValue.ToString();
+        
+
+        if (waveTimer >= timeBetweenwaves)
         {
             StartNewWave();
         }
@@ -51,5 +59,6 @@ public class zombieWaveSystem : MonoBehaviour
         }
 
         waveNumber++;
+        WaveNumber.text = waveNumber.ToString();
     }
 }
